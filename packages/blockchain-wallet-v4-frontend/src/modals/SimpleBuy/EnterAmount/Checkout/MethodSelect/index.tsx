@@ -17,42 +17,6 @@ const SelectBoxMethod = styled(SelectBox)`
   margin-bottom: 24px;
   .bc__dropdown-indicator {
     color: ${props => props.theme.grey600};
-    padding-right: 24px;
-  }
-  .bc__option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    border-bottom: 1px solid ${props => props.theme.grey000};
-    color: none;
-    &:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    &.bc__single-value {
-      font-size: 16px;
-      font-weight: 600;
-    }
-    &.bc__option--is-focused {
-      background-color: ${props => props.theme.white};
-    }
-    &.bc__option--is-focused.bc__option--is-selected,
-    &.bc__option--is-focused {
-      background-color: ${props => props.theme.white};
-    }
-    &.bc__option--is-selected {
-      &:after {
-        content: none;
-      }
-      * {
-        font-weight: 600;
-      }
-    }
-    .bc__single-value {
-      font-size: 16px;
-      font-weight: 600;
-    }
   }
 `
 const DisplayContainer = styled.div<{
@@ -62,7 +26,6 @@ const DisplayContainer = styled.div<{
   display: flex;
   width: 100%;
   align-items: center;
-  height: 76px;
   box-sizing: border-box;
   justify-content: space-between;
   padding: ${props =>
@@ -120,13 +83,13 @@ class MethodSelect extends PureComponent<Props> {
       case 'BANK_ACCOUNT':
         return 'Bank Wire Transfer'
       case 'PAYMENT_CARD':
-        return 'Add a Credit or Debit Card'
+        return 'Credit or Debit Card'
       case 'USER_CARD':
         return value && value.card
           ? value.card.label
             ? value.card.label
             : value.card.type
-          : 'Add a Credit or Debit Card'
+          : 'Credit or Debit Card'
     }
   }
 
@@ -141,7 +104,7 @@ class MethodSelect extends PureComponent<Props> {
       case 'PAYMENT_CARD':
         return (
           <IconContainer>
-            <Icon size='16px' color='blue600' name='credit-card-sb' />
+            <Icon size='18px' color='blue600' name='credit-card-filled' />
           </IconContainer>
         )
       case 'USER_CARD':
